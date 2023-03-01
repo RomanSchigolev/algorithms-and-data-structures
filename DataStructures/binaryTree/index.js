@@ -13,6 +13,7 @@ class BinaryTree {
 
   add(value) {
     const newNode = new Node(value);
+
     if (!this.root) {
       this.root = newNode;
       return;
@@ -51,17 +52,21 @@ class BinaryTree {
     this.preOrder(node.left, callback);
     this.preOrder(node.right, callback);
   }
+
   inOrder(node, callback) {
     if (!node) {
       return;
     }
 
     this.inOrder(node.left, callback);
+
     if (callback) {
       callback(node);
     }
+
     this.inOrder(node.right, callback);
   }
+
   postOrder(node, callback) {
     if (!node) {
       return;
@@ -86,6 +91,7 @@ class BinaryTree {
 
     return this.postOrder(this.root, callback);
   }
+
   traverseBreadthFirstSearch(callback) {
     const queue = [this.root];
 

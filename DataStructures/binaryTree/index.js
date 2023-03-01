@@ -86,7 +86,23 @@ class BinaryTree {
 
     return this.postOrder(this.root, callback);
   }
-  traverseBreadthFirstSearch() {}
+  traverseBreadthFirstSearch(callback) {
+    const queue = [this.root];
+
+    while (queue.length) {
+      const node = queue.shift();
+
+      callback(node);
+
+      if (node.left) {
+        queue.push(node.left);
+      }
+
+      if (node.right) {
+        queue.push(node.right);
+      }
+    }
+  }
 }
 
 const binaryTree = new BinaryTree();

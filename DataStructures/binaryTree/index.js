@@ -38,6 +38,55 @@ class BinaryTree {
       }
     }
   }
+
+  preOrder(node, callback) {
+    if (!node) {
+      return;
+    }
+
+    if (callback) {
+      callback(node);
+    }
+
+    this.preOrder(node.left, callback);
+    this.preOrder(node.right, callback);
+  }
+  inOrder(node, callback) {
+    if (!node) {
+      return;
+    }
+
+    this.inOrder(node.left, callback);
+    if (callback) {
+      callback(node);
+    }
+    this.inOrder(node.right, callback);
+  }
+  postOrder(node, callback) {
+    if (!node) {
+      return;
+    }
+
+    this.postOrder(node.left, callback);
+    this.postOrder(node.right, callback);
+
+    if (callback) {
+      callback(node);
+    }
+  }
+
+  traverseDepthFirstSearch(callback, method) {
+    if (method === "preOrder") {
+      return this.preOrder(this.root, callback);
+    }
+
+    if (method === "inOrder") {
+      return this.inOrder(this.root, callback);
+    }
+
+    return this.postOrder(this.root, callback);
+  }
+  traverseBreadthFirstSearch() {}
 }
 
 const binaryTree = new BinaryTree();

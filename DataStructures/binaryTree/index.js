@@ -1,0 +1,53 @@
+class Node {
+  constructor(value) {
+    this.value = value;
+    this.left = null;
+    this.right = null;
+  }
+}
+
+class BinaryTree {
+  constructor() {
+    this.root = null;
+  }
+
+  add(value) {
+    const newNode = new Node(value);
+    if (!this.root) {
+      this.root = newNode;
+      return;
+    }
+
+    let currentNode = this.root;
+
+    while (currentNode) {
+      if (newNode.value < currentNode.value) {
+        if (!currentNode.left) {
+          currentNode.left = newNode;
+          return;
+        }
+
+        currentNode = currentNode.left;
+      } else {
+        if (!currentNode.right) {
+          currentNode.right = newNode;
+          return;
+        }
+
+        currentNode = currentNode.right;
+      }
+    }
+  }
+}
+
+const binaryTree = new BinaryTree();
+
+binaryTree.add(8);
+binaryTree.add(7);
+binaryTree.add(9);
+binaryTree.add(5);
+binaryTree.add(10);
+binaryTree.add(20);
+binaryTree.add(6);
+binaryTree.add(2);
+binaryTree.add(11);
